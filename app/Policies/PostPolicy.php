@@ -8,7 +8,7 @@ use App\Permissions\V1\Abilities;
 
 class PostPolicy
 {
-    public function before(User $user): bool|null
+    public function before(User $user): ?bool
     {
         if ($user->type === 'admin') {
             return true;

@@ -28,7 +28,7 @@ class PostTest extends TestCase
     public function test_can_list_only_1_posts_when_filter()
     {
         Event::fake();
-        $title = fake()->sentence() . ' faidz';
+        $title = fake()->sentence().' faidz';
         Post::factory()->state(['title' => $title])->create();
         Post::factory()->count(10)->create();
         $user = User::factory()->create();
@@ -47,11 +47,10 @@ class PostTest extends TestCase
         Post::factory()->count(10)->create();
 
         $this->actingAs($user)
-            ->getJson('/api/users/' . $user->id . '/posts')
+            ->getJson('/api/users/'.$user->id.'/posts')
             ->assertJsonCount(10, 'data')
             ->assertStatus(200);
     }
-
 
     public function test_can_create_post(): void
     {

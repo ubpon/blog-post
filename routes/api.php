@@ -4,7 +4,6 @@ use App\Http\Controllers\API\V1\Authentication\AuthenticationController;
 use App\Http\Controllers\API\V1\Posts\PostController;
 use App\Http\Controllers\API\V1\Posts\UserController;
 use App\Http\Controllers\API\V1\Users\UserController as APIUserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthenticationController::class)->group(function () {

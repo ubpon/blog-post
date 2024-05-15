@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Models\Post;
 use App\Services\PostService;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +14,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/posts', function (PostService $postService) {
     return view('post', [
-        'posts' => auth()->user()->posts()->paginate(5)
+        'posts' => auth()->user()->posts()->paginate(5),
     ]);
 })->middleware(['auth', 'verified'])->name('posts.index');
 

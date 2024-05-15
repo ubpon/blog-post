@@ -6,18 +6,18 @@ use App\Jobs\SendNewPostJob;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class PostService
 {
     public function index(?string $filter)
     {
         try {
-           return Post::query()->search($filter)->paginate(25);
+            return Post::query()->search($filter)->paginate(25);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
     }
+
     public function create(array $data): Model
     {
         try {

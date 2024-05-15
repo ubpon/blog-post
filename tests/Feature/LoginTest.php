@@ -75,18 +75,18 @@ class LoginTest extends TestCase
         $password = Str::random(16);
         $this->actingAs($user)
             ->postJson('/api/users/profile', [
-            'name' => 'Faidz Ubpon',
-            'email' => 'faidz@ubpon.com',
-            'password' => $password,
-            'password_confirmation' => $password
-        ])
+                'name' => 'Faidz Ubpon',
+                'email' => 'faidz@ubpon.com',
+                'password' => $password,
+                'password_confirmation' => $password,
+            ])
             ->assertStatus(200)
             ->assertJsonStructure([
                 'data' => [
                     'type',
                     'id',
-                    'attributes' => []
-                ]
+                    'attributes' => [],
+                ],
             ]);
     }
 
@@ -99,7 +99,7 @@ class LoginTest extends TestCase
                 'name' => 'Faidz Ubpon',
                 'email' => 'faidz@ubpon.com',
                 'password' => $password,
-                'password_confirmation' => 'helloworld'
+                'password_confirmation' => 'helloworld',
             ])
             ->assertUnprocessable();
     }
