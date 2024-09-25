@@ -12,10 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
 {
-    public function __construct(private readonly UserService $userService)
-    {
-
-    }
+    public function __construct(private readonly UserService $userService) {}
 
     public function register(RegisterRequest $request)
     {
@@ -43,7 +40,7 @@ class AuthenticationController extends Controller
 
         return response()->json([
             'success' => false,
-            'message' => 'Unauthorized',
-        ], 404);
+            'message' => 'Invalid credentials',
+        ], 404); // use 404 error code (Unauthenticated) for security
     }
 }

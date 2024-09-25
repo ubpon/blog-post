@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\SendNewPostJob;
 use App\Models\Post;
 
 class PostObserver
@@ -17,6 +18,8 @@ class PostObserver
                 'from_table' => Post::class,
                 'from_table_id' => $post->id,
             ]);
+
+        SendNewPostJob::dispatch($post)->delay(now()->addMinute());
     }
 
     public function updating(Post $post)

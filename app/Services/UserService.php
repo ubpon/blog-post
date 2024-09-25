@@ -3,24 +3,25 @@
 namespace App\Services;
 
 use App\Models\User;
+use Exception;
 
 class UserService
 {
     public function create(array $data)
     {
-        try {
+        return rescue(function () use ($data) {
             return User::query()->create($data);
-        } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
-        }
+        }, function (Exception $e) {
+            throw new Exception($e->getMessage());
+        });
     }
 
     public function update(array $data)
     {
-        try {
+        return rescue(function () use ($data) {
             return tap(auth()->user())->update($data);
-        } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
-        }
+        }, function (Exception $e) {
+            throw new Exception($e->getMessage());
+        });
     }
 }
