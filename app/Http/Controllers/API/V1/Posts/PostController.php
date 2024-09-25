@@ -13,7 +13,9 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    public function __construct(private readonly PostService $postService) {}
+    public function __construct(private readonly PostService $postService)
+    {
+    }
 
     public function index(Request $request)
     {
